@@ -13,13 +13,22 @@ function submitIssue(e) {
   if (localStorage.getItem('issues')){
     issues = JSON.parse(localStorage.getItem('issues'));
   }
+  
   issues.push(issue);
   localStorage.setItem('issues', JSON.stringify(issues));
 
   document.getElementById('issueInputForm').reset();
+  totalIssue();
   fetchIssues();
   e.preventDefault();
 }
+
+const totalIssue = () => {
+  const issues = JSON.parse(localStorage.getItem('issues')) || [];
+  document.getElementById("total-issue").innerHTML=issues.length;
+}
+
+
 
 const closeIssue = id => {
   const issues = JSON.parse(localStorage.getItem('issues'));
