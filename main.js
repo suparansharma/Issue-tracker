@@ -19,6 +19,7 @@ function submitIssue(e) {
 
   document.getElementById('issueInputForm').reset();
   totalIssue();
+  totalOpenIssue();
   fetchIssues();
   e.preventDefault();
 }
@@ -29,6 +30,27 @@ const totalIssue = () => {
 }
 
 
+
+
+const totalOpenIssue = () =>{
+
+  let openIssue = 0;
+  const issues = JSON.parse(localStorage.getItem('issues')) || [];
+  issues.forEach(element => {
+    if(element.status === "Open"){
+  
+      openIssue +=1
+    }
+    
+  });
+  
+  console.log(openIssue);
+  
+  document.getElementById("total-open-issue").innerHTML=openIssue;
+  
+  }
+  
+  
 
 const closeIssue = id => {
   const issues = JSON.parse(localStorage.getItem('issues'));
