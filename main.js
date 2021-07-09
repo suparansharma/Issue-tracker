@@ -29,6 +29,7 @@ const totalIssue = () => {
   document.getElementById("total-issue").innerHTML=issues.length;
 }
 
+totalIssue();
 
 
 
@@ -50,7 +51,8 @@ const totalOpenIssue = () =>{
   
   }
   
-  
+  totalOpenIssue();
+
   const setStatusClosed = (event ,id) => {
     event.preventDefault();
     const issues = JSON.parse(localStorage.getItem('issues'));
@@ -68,7 +70,7 @@ const totalOpenIssue = () =>{
     event.preventDefault();
     const issues = JSON.parse(localStorage.getItem('issues'));
      const remainingIssues = issues.filter(issue => issue.id != id )
-     console.log(remainingIssuess );
+     console.log(remainingIssues);
     document.getElementById(`issue-card-${id}`).style.display = "none";
     localStorage.setItem('issues', JSON.stringify(remainingIssues));
     totalIssue();
